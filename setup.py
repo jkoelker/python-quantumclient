@@ -1,74 +1,29 @@
-# vim: tabstop=4 shiftwidth=4 softtabstop=4
-
-# Copyright 2011 Citrix Systems
-# All Rights Reserved.
-#
-#    Licensed under the Apache License, Version 2.0 (the "License"); you may
-#    not use this file except in compliance with the License. You may obtain
-#    a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-#    Unless required by applicable law or agreed to in writing, software
-#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-#    License for the specific language governing permissions and limitations
-#    under the License.
-
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from ez_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup, find_packages
-
-import version
-
-Name = 'python-quantumclient'
-Url = "https://launchpad.net/quantum"
-Version = version.canonical_version_string()
-License = 'Apache License 2.0'
-Author = 'Netstack'
-AuthorEmail = 'netstack@lists.launchpad.net'
-Maintainer = ''
-Summary = 'Client functionalities for Quantum'
-ShortDescription = Summary
-Description = Summary
-
-requires = [
-    'Paste',
-    'PasteDeploy',
-    'python-gflags',
-]
-
-EagerResources = [
-]
-
-ProjectScripts = [
-]
-
-PackageData = {
-}
+from setuptools import setup, find_packages
 
 
-setup(
-    name=Name,
-    version=Version,
-    url=Url,
-    author=Author,
-    author_email=AuthorEmail,
-    description=ShortDescription,
-    long_description=Description,
-    license=License,
-    scripts=ProjectScripts,
-    install_requires=requires,
-    include_package_data=False,
-    packages=["quantum", "quantum.client", "quantum.common"],
-    package_data=PackageData,
-    eager_resources=EagerResources,
-    entry_points={
-        'console_scripts': [
-            'quantum = quantum.client.cli:main'
-        ]
-    },
-)
+version = '0.1'
+
+
+setup(name='quantum.client',
+      version=version,
+      description="Quantum cli and pthon bindings",
+      long_description="""\
+""",
+      classifiers=[],
+      keywords='',
+      author='Jason K\xc3\xb6lker',
+      author_email='jason@koelker.net',
+      url='',
+      license='Apache 2',
+      packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
+      include_package_data=True,
+      zip_safe=False,
+      install_requires=[
+          # -*- Extra requirements: -*-
+      ],
+      entry_points="""
+      # -*- Entry points: -*-
+      [console_scripts]
+      quantum = quantum.cli.main:main
+      """,
+      )
